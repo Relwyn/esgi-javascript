@@ -7,10 +7,12 @@
 function isStr (str) {
   try {
     if (typeof str !== 'string') {
-      throw ('The variable sent is not a string');
+      return false;
+      //throw ('The variable sent is not a string');
     }
     if (str.length === 0) {
-      throw ('The string sent is empty');
+      return false;
+      //throw ('The string sent is empty');
     }
     return true;
   } catch (error) {
@@ -170,6 +172,9 @@ function vig(str, key) {
   const A = 'A'.charCodeAt(0);
   const Z = 'Z'.charCodeAt(0);
   let cpt = 0;
+  if (!isStr(str) || !isStr(key)) {
+    return '';
+  }
   return str.split('').map(char => {
     char = char.toLowerCase()
     char = (( char.charCodeAt(0) >= a && char.charCodeAt(0) <= z )

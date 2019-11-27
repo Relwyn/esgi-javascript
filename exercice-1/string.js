@@ -132,38 +132,6 @@ function leet(str) {
   }
 }
 
-/**
- ** return the string
- *
- * @param {*} str
- * @returns
- */
-function leet(str) {
-  try {
-    let res = '';
-    let vowels =
-    {
-      'a': '4',
-      'e': '3',
-      'i': '1',
-      'o': '0',
-      'u': '(_)',
-      'y': '7'
-    };
-    if (!isStr(str)) {
-      throw('Please check the data sent thx');
-    }
-    for (cpt in str ) {
-      res += typeof vowels[str[cpt].toLowerCase()] === 'undefined' ? str[cpt] : vowels[str[cpt].toLowerCase()];
-    }
-    return res;
-  } catch (error) {
-    console.log('leet error');
-    console.log(error);
-    return error;
-  }
-}
-
 function prop_access(obj, path) {
   try {
     let data = {...obj};

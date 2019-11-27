@@ -134,6 +134,9 @@ function leet(str) {
 
 function prop_access(obj, path) {
   try {
+    if (!isStr(path)) {
+      return '';
+    }
     let data = {...obj};
     let dir = [];
     if (!isStr(path)) {
@@ -241,7 +244,8 @@ let prairie ={
 // console.log(vig('Hello World'));
 // console.log(vig('animal'));
 // console.log(vig('xyz', 'abc'));
-console.log(vig('antiConstiTutioNnellement', 'foo'));
+// console.log(vig('antiConstiTutioNnellement', 'foo'));
+// console.log(vig(null, 'test'));
 
 
 

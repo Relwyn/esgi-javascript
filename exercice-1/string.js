@@ -71,9 +71,7 @@ function camelCase(str) {
     if (!isStr(str)) {
       throw('Please check the data sent thx');
     }
-    return (str.toLowerCase().match(/\S+/g) || []).map(function(item) {
-      return ucfirst(item);
-    }).join('');
+    return (str.toLowerCase().match(/\S+/g) || []).join('');
   } catch (error) {
     console.log('camelCase error');
     console.log(error);
@@ -135,10 +133,15 @@ function leet(str) {
 function prop_access(obj, path) {
   try {
     let data = {...obj};
+    let dir = [];
+    if (!isStr(path)) {
+      return obj;
+    }
     for (value of path.split('.')) {
       if (typeof data[value] === 'undefined') {
-        return obj;
+        return dir.join('.');
       }
+      dir.push(value);
       data = data[value];
     }
     return data;
@@ -147,6 +150,34 @@ function prop_access(obj, path) {
     console.log(error);
     return error;
   }
+}
+
+function verlan(str) {
+  try {
+    return (str.match(/\S+/g) || []).map(function(item) {
+      return item.split('').reverse().join('');
+    }).join(' ');
+  } catch (error) {
+    console.log('verlan error');
+    console.log(error);
+    return error;
+  }
+}
+
+function vig(str, key) {
+  const a = 'a'.charCodeAt(0);
+  const z = 'z'.charCodeAt(0);
+  const A = 'A'.charCodeAt(0);
+  const Z = 'Z'.charCodeAt(0);
+  let cpt = 0;
+  return str.split('').map(char => {
+    char = (( char.charCodeAt(0) >= a && char.charCodeAt(0) <= z )
+    ? String.fromCharCode((( char.charCodeAt(0) - a ) + ( key[cpt].charCodeAt(0) - a )) % 26 + a) : ((( char.charCodeAt(0) >= A && char.charCodeAt(0) <= Z )
+    ? String.fromCharCode((( char.charCodeAt(0) - A ) + ( key[cpt].charCodeAt(0) - A )) % 26 + A) : char )));
+    // console.log(cpt);
+    cpt = (cpt + 1) % (key.length)
+    return char;
+  }).join('');
 }
 
 // console.log(ucfirst(''));
@@ -185,9 +216,25 @@ let prairie ={
     }
   }
 };
-// console.log(prop_access(animal, ''));
-// console.log(prop_access(animal, 5));
-// console.log(prop_access(animal, 'Hello World'));
+
+// console.log(prop_access(prairie, ''));
+// console.log(prop_access(prairie, 5));
+// console.log(prop_access(prairie, 'Hello World'));
 // console.log(prop_access(prairie, 'animal'));
 // console.log(prop_access(prairie, 'animal.type.name.test.lol'));
+
+// console.log(verlan(''));
+// console.log(verlan(5));
+// console.log(verlan('Hello World'));
+// console.log(verlan('animal'));
+// console.log(verlan('animal.type.name.test.lol'));
+
+// console.log(vig(''));
+// console.log(vig(5));
+// console.log(vig('Hello World'));
+// console.log(vig('animal'));
+console.log(vig('xyz', 'abc'));
+console.log(vig('hello world My name IS PUTIN          ', 'abc'));
+
+
 

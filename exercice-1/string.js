@@ -71,9 +71,11 @@ function capitalize(str) {
 function camelCase(str) {
   try {
     if (!isStr(str)) {
-      throw('Please check the data sent thx');
+      return '';
     }
-    return (str.toLowerCase().match(/\S+/g) || []).join('');
+    return (str.toLowerCase().match(/\S+/g) || []).map(function(item) {
+      return ucfirst(item);
+    }).join('');
   } catch (error) {
     console.log('camelCase error');
     console.log(error);

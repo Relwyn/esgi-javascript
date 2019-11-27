@@ -175,7 +175,9 @@ function vig(str, key) {
     ? String.fromCharCode((( char.charCodeAt(0) - a ) + ( key[cpt].charCodeAt(0) - a )) % 26 + a) : ((( char.charCodeAt(0) >= A && char.charCodeAt(0) <= Z )
     ? String.fromCharCode((( char.charCodeAt(0) - A ) + ( key[cpt].charCodeAt(0) - A )) % 26 + A) : char )));
     // console.log(cpt);
-    cpt = (cpt + 1) % (key.length)
+    if ( ( char.charCodeAt(0) >= A && char.charCodeAt(0) <= Z ) || ( char.charCodeAt(0) >= a && char.charCodeAt(0) <= z )) {
+      cpt = (cpt + 1) % (key.length)
+    }
     return char;
   }).join('');
 }
@@ -233,8 +235,8 @@ let prairie ={
 // console.log(vig(5));
 // console.log(vig('Hello World'));
 // console.log(vig('animal'));
-console.log(vig('xyz', 'abc'));
-console.log(vig('hello world My name IS PUTIN          ', 'abc'));
+// console.log(vig('xyz', 'abc'));
+console.log(vig('une phrase tres tres longue mais qui ne veut absolument rien dire car c est juste un test', 'nawakdecheznawak'));
 
 
 

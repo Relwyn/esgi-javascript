@@ -174,8 +174,6 @@ function verlan(str) {
 function vig(str, key) {
   const a = 'a'.charCodeAt(0);
   const z = 'z'.charCodeAt(0);
-  const A = 'A'.charCodeAt(0);
-  const Z = 'Z'.charCodeAt(0);
   let cpt = 0;
   if (!isStr(str) || !isStr(key)) {
     return '';
@@ -184,8 +182,7 @@ function vig(str, key) {
     char = char.toLowerCase()
     char = (( char.charCodeAt(0) >= a && char.charCodeAt(0) <= z )
     ? String.fromCharCode((( char.charCodeAt(0) - a ) + ( key[cpt].charCodeAt(0) - a )) % 26 + a) : char );
-    // console.log(cpt);
-    if ( ( char.charCodeAt(0) >= A && char.charCodeAt(0) <= Z ) || ( char.charCodeAt(0) >= a && char.charCodeAt(0) <= z )) {
+    if (( char.charCodeAt(0) >= a && char.charCodeAt(0) <= z )) {
       cpt = (cpt + 1) % (key.length)
     }
     return char;

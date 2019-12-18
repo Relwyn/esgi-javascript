@@ -139,6 +139,12 @@ function prop_access(obj, path) {
     if (!isStr(path)) {
       return '';
     }
+    if (obj === null) {
+      console.log(path, "not exist")
+    }
+    if (path === null) {
+      return obj
+    }
     if (path === '') {
       return obj
     }

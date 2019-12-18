@@ -140,7 +140,7 @@ function prop_access(obj, path) {
       return '';
     }
     if (path === '') {
-      return null
+      return obj
     }
     let data = {...obj};
     let dir = [];

@@ -139,6 +139,9 @@ function prop_access(obj, path) {
     if (!isStr(path)) {
       return '';
     }
+    if (path === '') {
+      return null
+    }
     let data = {...obj};
     let dir = [];
     if (!isStr(path)) {
@@ -226,11 +229,11 @@ let prairie ={
   }
 };
 
-// console.log(prop_access(prairie, ''));
-// console.log(prop_access(prairie, 5));
-// console.log(prop_access(prairie, 'Hello World'));
-// console.log(prop_access(prairie, 'animal'));
-// console.log(prop_access(prairie, 'animal.type.name.test.lol'));
+console.log(prop_access(prairie, ''));
+console.log(prop_access(prairie, 5));
+console.log(prop_access(prairie, 'Hello World'));
+console.log(prop_access(prairie, 'animal'));
+console.log(prop_access(prairie, 'animal.type.name.test.lol'));
 
 // console.log(verlan(''));
 // console.log(verlan(5));

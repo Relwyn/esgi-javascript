@@ -31,7 +31,7 @@ function isStr (str) {
 function ucfirst(str) {
   try {
     if (!isStr(str)) {
-      throw('Please check the data sent thx');
+      throw('');
     }
     return str[0].toUpperCase() + str.substring(1);
   } catch (error) {
@@ -136,11 +136,9 @@ function leet(str) {
 
 function prop_access(obj, path) {
   try {
-    if (!isStr(path)) {
-      return '';
-    }
     if (obj === null) {
       console.log(path, "not exist")
+      return;
     }
     if (path === null) {
       return obj
@@ -236,8 +234,8 @@ let prairie ={
 };
 
 console.log(prop_access(prairie, ''));
-console.log(prop_access(prairie, 5));
-console.log(prop_access(prairie, 'Hello World'));
+console.log(prop_access(null, 5));
+console.log(prop_access(prairie, null));
 console.log(prop_access(prairie, 'animal'));
 console.log(prop_access(prairie, 'animal.type.name.test.lol'));
 
